@@ -73,3 +73,115 @@
 #include <cmath>
 using namespace std;
 
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+void divide(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero.\n\n";
+    } else {
+        cout << "Result: " << a << " / " << b << " = " << fixed << setprecision(2) << (a / b) << "\n\n";
+    }
+}
+
+void modulus(double a, double b) {
+    if (static_cast<int>(b) == 0) {
+        cout << "Error: Cannot divide by zero.\n\n";
+    } else {
+        int ia = static_cast<int>(a);
+        int ib = static_cast<int>(b);
+        cout << "Result: " << ia << " % " << ib << " = " << (ia % ib) << "\n\n";
+    }
+}
+
+double power(double a, double b) {
+    return pow(a, b);
+}
+
+void getTwoNumbers(double& a, double& b) {
+    cout << "Enter first number : ";
+    while (!(cin >> a)) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input. Enter first number : ";
+    }
+    cout << "Enter second number: ";
+    while (!(cin >> b)) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input. Enter second number: ";
+    }
+}
+
+int main() {
+    int choice = 0;
+
+    while (choice != 7) {
+        cout << "============================\n";
+        cout << "      SIMPLE CALCULATOR     \n";
+        cout << "============================\n";
+        cout << "1. Addition\n";
+        cout << "2. Subtraction\n";
+        cout << "3. Multiplication\n";
+        cout << "4. Division\n";
+        cout << "5. Modulus\n";
+        cout << "6. Exponentiation\n";
+        cout << "7. Quit\n";
+        cout << "Select an operation (1-7): ";
+
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid choice. Please enter a number from 1 to 7.\n\n";
+            continue;
+        }
+
+        if (choice >= 1 && choice <= 6) {
+            double num1, num2;
+            getTwoNumbers(num1, num2);
+
+            switch (choice) {
+                case 1:
+                    cout << "Result: " << num1 << " + " << num2 << " = " << fixed << setprecision(2) << add(num1, num2) << "\n\n";
+                    break;
+                case 2:
+                    cout << "Result: " << num1 << " - " << num2 << " = " << fixed << setprecision(2) << subtract(num1, num2) << "\n\n";
+                    break;
+                case 3:
+                    cout << "Result: " << num1 << " * " << num2 << " = " << fixed << setprecision(2) << multiply(num1, num2) << "\n\n";
+                    break;
+                case 4:
+                    divide(num1, num2);
+                    break;
+                case 5:
+                    modulus(num1, num2);
+                    break;
+                case 6:
+                    cout << "Result: " << num1 << " ^ " << num2 << " = " << fixed << setprecision(2) << power(num1, num2) << "\n\n";
+                    break;
+            }
+            cout << resetiosflags(ios_base::fixed);
+        } else if (choice == 7) {
+            cout << "Goodbye!\n";
+        } else {
+            cout << "Invalid choice. Please enter a number from 1 to 7.\n\n";
+        }
+    }
+
+    return 0;
+}
