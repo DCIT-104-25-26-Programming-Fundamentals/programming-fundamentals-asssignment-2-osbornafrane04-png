@@ -1,7 +1,7 @@
 #include <iostream>
+#include <iostream>
 using namespace std;
 
-// Part A: Function to generate and print the first N Fibonacci terms iteratively
 void printFibonacci(int n) {
     if (n <= 0) {
         cout << "Error: Number of terms must be a positive integer." << endl;
@@ -26,7 +26,6 @@ void printFibonacci(int n) {
     cout << endl;
 }
 
-// Part B: Function to check if a target number belongs to the Fibonacci sequence
 bool isFibonacci(long long target) {
     if (target < 0) {
         return false;
@@ -52,7 +51,6 @@ bool isFibonacci(long long target) {
 }
 
 int main() {
-    // PART A: Print the First N Terms
     int n;
     cout << "How many terms? ";
     cin >> n;
@@ -60,7 +58,6 @@ int main() {
 
     cout << endl;
 
-    // PART B: Check if a Number Belongs to the Sequence
     long long num;
     cout << "Enter a number to check: ";
     cin >> num;
